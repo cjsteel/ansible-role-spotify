@@ -2,11 +2,14 @@
 # tasks file for spotify
 
 
-- name: Add the Spotify repository signing keys to be able to verify downloaded packages
+- name: Add the Spotify repository gpg signing keys
   apt_key:
-    keyserver: keyserver.ubuntu.com
-    id: 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
     url: https://download.spotify.com/debian/pubkey.gpg
+    state: present
+  register: spotify_add_key
+
+#- name: debug
+#  debug: var=spotify_add_key
 
 - name: "Add the Spotify repository"
   apt_repository:
