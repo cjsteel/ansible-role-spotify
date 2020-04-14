@@ -1,0 +1,8 @@
+---
+# handlers file for spotify
+- name: restart spotify
+  service:
+    name: "{{ spotify_service }}"
+    state: restarted
+  when:
+    - ansible_virtualization_type != "docker"

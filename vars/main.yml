@@ -1,0 +1,7 @@
+---
+# vars file for spotify
+_spotify_packages:
+  default:
+    - spotify
+
+spotify_packages: "{{ _spotify_packages[ansible_os_family] | default(_spotify_packages['default']) }}"
